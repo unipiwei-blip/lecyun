@@ -300,7 +300,7 @@ body[data-hero="page"] .nav-drop__menu a { color: var(--ink) !important; }
 .footer-col a:hover { color: var(--gold-400); }
 .footer-contact { text-align: center; }
 .footer-qr { width: 96px; height: 96px; margin: 0 auto 12px; border-radius: 8px; overflow: hidden; background: #fff; }
-.footer-qr img { width: 100%; height: 100%; object-fit: cover; }
+.footer-qr img { width: 100%; height: 100%; object-fit: contain; padding: 4px; background: #fff; }
 .footer-contact p { font-size: 13px; line-height: 1.9; }
 .footer-contact strong { display: block; color: #fff; font-size: 15px; font-weight: 600; }
 .footer-bottom-full { text-align: center; padding: 16px 0; margin-top: 28px; border-top: 1px solid rgba(255,255,255,0.10); font-size: 13px; color: rgba(255,255,255,0.6); }
@@ -335,13 +335,25 @@ body[data-hero="page"] .nav-drop__menu a { color: var(--ink) !important; }
   .service-grid { grid-template-columns: repeat(2, 1fr); }
   .univ-grid { grid-template-columns: repeat(2, 1fr); }
   .sector-grid { grid-template-columns: repeat(2, 1fr); }
+  .header-inner { height: 68px; gap: 12px; }
+  .brand { flex: 1 1 auto; min-width: 0; gap: 8px; }
+  .brand__mark { width: 38px; height: 38px; flex: none; }
+  .brand__name { font-size: 15px; line-height: 1.18; white-space: normal; overflow-wrap: anywhere; }
+  .header-actions { flex: 0 0 auto; }
+  .nav-cta { display: none; }
   .main-nav { display: none; }
-  .main-nav.is-open { display: block; position: absolute; top: 76px; left: 0; right: 0; background: #fff; box-shadow: var(--shadow-3); padding: 12px 24px 20px; max-height: calc(100vh - 76px); overflow-y: auto; }
+  .main-nav.is-open { display: block; position: absolute; top: 68px; left: 0; right: 0; background: #fff; box-shadow: var(--shadow-3); padding: 12px 24px 20px; max-height: calc(100vh - 68px); overflow-y: auto; }
   .main-nav.is-open a { color: var(--ink) !important; }
   .main-nav.is-open > ul { flex-direction: column; align-items: stretch; gap: 0; }
   .main-nav.is-open .nav-link { padding: 12px 8px; border-bottom: 1px solid var(--line); }
   .main-nav.is-open .nav-drop__menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding: 4px 0 10px 12px; min-width: 0; background: transparent; }
-  .nav-toggle { display: block; }
+  .nav-toggle { display: block; flex: 0 0 auto; width: 40px; height: 40px; }
+  .nav-toggle span { left: 10px; right: 10px; }
+  .nav-toggle span:nth-child(1) { top: 12px; }
+  .nav-toggle span:nth-child(2) { top: 19px; }
+  .nav-toggle span:nth-child(3) { top: 26px; }
+  .nav-toggle.is-open span:nth-child(1) { top: 19px; }
+  .nav-toggle.is-open span:nth-child(3) { top: 19px; }
 }
 @media (max-width: 760px) {
   .section { padding: 64px 0; }
@@ -631,3 +643,44 @@ body[data-hero="page"] .nav-drop__menu a { color: var(--ink) !important; }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .univ-card--dark .univ-card__foot { display: none; }
+
+/* ===== 手机端首页紧凑化：卡片两列并排，缩短翻页长度 ===== */
+@media (max-width: 760px) {
+  .section { padding: 48px 0; }
+  .section-head { margin-bottom: 32px; }
+  .sector-grid, .service-grid, .school-preview, .news-list { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+
+  /* 六大板块卡片 */
+  .sector-card { padding: 18px 13px 20px; }
+  .sector-card__no { font-size: 10px; letter-spacing: .02em; }
+  .sector-card__en { font-size: 9px; letter-spacing: .06em; }
+  .sector-card h3 { font-size: 17px; margin: 10px 0 7px; }
+  .sector-card p { font-size: 12px; line-height: 1.55; }
+  .sector-card__link { margin-top: 10px; font-size: 12px; }
+
+  /* 服务项目卡片 */
+  .service-card { padding: 16px 13px; }
+  .service-card__icon { width: 36px; height: 36px; font-size: 17px; margin-bottom: 10px; border-radius: 10px; }
+  .service-card__cate { font-size: 10px; }
+  .service-card h3 { font-size: 14px; margin: 5px 0; }
+  .service-card p { font-size: 11.5px; line-height: 1.55; }
+  .service-card a { margin-top: 8px; font-size: 11.5px; }
+
+  /* 院校预览卡片 */
+  .school-preview .univ-card--dark .univ-card__media { height: 96px; }
+  .school-preview .univ-card--dark .univ-card__body { padding: 12px 12px 14px; }
+  .school-preview .univ-card--dark .univ-card__tags { margin-bottom: 7px; gap: 4px; flex-wrap: wrap; }
+  .school-preview .utag { font-size: 9px; padding: 2px 5px; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+  .school-preview .univ-card--dark h3 { font-size: 13px; margin-bottom: 3px; }
+  .school-preview .univ-card--dark .univ-card__en { font-size: 9px; margin-bottom: 7px; }
+  .school-preview .univ-intro { font-size: 10.5px; line-height: 1.5; }
+  .school-preview .univ-fee { font-size: 10px; margin-top: 7px; }
+  .school-preview .univ-card__more { font-size: 11px; padding-top: 8px; }
+
+  /* 新闻卡片 */
+  .news-list .news-card__img { height: 110px; }
+  .news-list .news-card__body { padding: 12px 13px 16px; }
+  .news-list .news-card h3 { font-size: 13px; margin: 7px 0 5px; }
+  .news-list .news-card p { font-size: 11px; }
+  .news-list .news-card__meta { font-size: 10px; }
+}
