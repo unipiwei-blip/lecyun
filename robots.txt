@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /assets/
+
+User-agent: Baiduspider
+Allow: /assets/
+
+User-agent: Googlebot
+Allow: /assets/
+
+Host: https://www.lecyun.com
+Sitemap: https://www.lecyun.com/sitemap.xml
